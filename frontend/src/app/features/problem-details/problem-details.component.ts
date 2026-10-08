@@ -11,43 +11,46 @@ import { Problem } from '../../shared/models/problem.model';
   standalone: true,
   imports: [CommonModule, RouterLink],
   template: `
-    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-6">
       <!-- Breadcrumb Navigation -->
-      <nav class="flex items-center gap-2 text-xs text-slate-500 mb-6">
-        <a routerLink="/problems" class="hover:text-indigo-600 font-medium">← Back to All Problems</a>
-        <span>/</span>
-        <span *ngIf="problem" class="text-slate-800 truncate font-semibold">{{ problem.title }}</span>
+      <nav class="flex items-center gap-2 text-xs text-zinc-400">
+        <a routerLink="/problems" class="hover:text-amber-400 font-semibold transition-colors flex items-center gap-1">
+          <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"/></svg>
+          Back to Problem Catalog
+        </a>
+        <span class="text-zinc-600">/</span>
+        <span *ngIf="problem" class="text-zinc-300 truncate font-medium">{{ problem.title }}</span>
       </nav>
 
       <!-- Loading State -->
-      <div *ngIf="loading" class="bg-white p-8 rounded-xl border border-slate-200 animate-pulse space-y-6">
-        <div class="h-6 bg-slate-200 rounded w-1/4"></div>
-        <div class="h-10 bg-slate-200 rounded w-3/4"></div>
-        <div class="h-32 bg-slate-200 rounded w-full"></div>
+      <div *ngIf="loading" class="bg-zinc-900 p-8 rounded-2xl border border-zinc-800 animate-pulse space-y-6">
+        <div class="h-6 bg-zinc-800 rounded w-1/4"></div>
+        <div class="h-10 bg-zinc-800 rounded w-3/4"></div>
+        <div class="h-32 bg-zinc-800 rounded w-full"></div>
       </div>
 
       <!-- Error State -->
-      <div *ngIf="error && !loading" class="text-center p-12 bg-white border border-slate-200 rounded-xl">
-        <h2 class="text-lg font-bold text-slate-800">Problem Statement Not Found</h2>
-        <p class="text-xs text-slate-500 mt-2">{{ error }}</p>
-        <a routerLink="/problems" class="inline-block mt-4 px-4 py-2 bg-indigo-600 text-white text-xs font-semibold rounded-lg">
+      <div *ngIf="error && !loading" class="text-center p-12 bg-zinc-900 border border-zinc-800 rounded-2xl">
+        <h2 class="text-lg font-bold text-white">Problem Statement Not Found</h2>
+        <p class="text-xs text-zinc-400 mt-2">{{ error }}</p>
+        <a routerLink="/problems" class="inline-block mt-4 px-5 py-2.5 bg-amber-500 hover:bg-amber-400 text-black text-xs font-black rounded-xl transition-colors">
           Return to Catalog
         </a>
       </div>
 
       <!-- Problem Content -->
-      <article *ngIf="problem && !loading" class="bg-white rounded-xl border border-slate-200 shadow-xs overflow-hidden">
+      <article *ngIf="problem && !loading" class="bg-zinc-900 rounded-2xl border border-zinc-800 shadow-2xl overflow-hidden">
         <!-- Header Banner -->
-        <div class="p-6 sm:p-8 border-b border-slate-100">
+        <div class="p-6 sm:p-8 border-b border-zinc-800/80 bg-zinc-950/40">
           <div class="flex flex-wrap items-center justify-between gap-3 mb-4">
             <div class="flex flex-wrap items-center gap-2">
-              <span class="px-3 py-1 text-xs font-semibold rounded-full bg-slate-100 text-slate-700">
+              <span class="px-3 py-1 text-xs font-bold uppercase tracking-wider rounded-md bg-zinc-800 text-zinc-200 border border-zinc-700/60">
                 {{ problem.domain }}
               </span>
-              <span [ngClass]="getDifficultyBadgeClass(problem.difficulty)" class="px-3 py-1 text-xs font-medium rounded-full">
+              <span [ngClass]="getDifficultyBadgeClass(problem.difficulty)" class="px-3 py-1 text-xs font-black uppercase tracking-wide rounded-md">
                 {{ problem.difficulty }}
               </span>
-              <span class="px-3 py-1 text-xs font-medium rounded-full bg-indigo-50 text-indigo-700 border border-indigo-100">
+              <span class="px-3 py-1 text-xs font-semibold rounded-md bg-zinc-800 text-amber-300 border border-zinc-700/50">
                 {{ formatProjectType(problem.projectType) }}
               </span>
             </div>
@@ -55,23 +58,32 @@ import { Problem } from '../../shared/models/problem.model';
             <!-- Bookmark Shortlist Button -->
             <button
               (click)="toggleBookmark()"
-              [ngClass]="problem.bookmarked ? 'bg-indigo-50 text-indigo-700 border-indigo-200' : 'bg-white text-slate-700 border-slate-200 hover:bg-slate-50'"
-              class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-lg border text-xs font-semibold transition-all">
+              [ngClass]="problem.bookmarked 
+                ? 'bg-amber-500/15 text-amber-400 border-amber-500/50' 
+                : 'bg-amber-500 hover:bg-amber-400 text-black border-amber-500 font-black shadow-md shadow-amber-500/20'"
+              class="inline-flex items-center gap-2 px-4 py-2 rounded-xl border text-xs font-bold transition-all">
               <svg class="w-4 h-4" [attr.fill]="problem.bookmarked ? 'currentColor' : 'none'" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z" />
               </svg>
-              {{ problem.bookmarked ? 'Shortlisted' : 'Shortlist Problem' }}
+              {{ problem.bookmarked ? 'Saved to Shortlist' : 'Add to Shortlist' }}
             </button>
           </div>
 
-          <h1 class="text-2xl sm:text-3xl font-extrabold text-slate-900 leading-tight">
+          <h1 class="text-2xl sm:text-4xl font-black text-white leading-tight tracking-tight">
             {{ problem.title }}
           </h1>
 
-          <div class="mt-4 flex flex-wrap items-center gap-4 text-xs text-slate-500">
-            <span *ngIf="problem.createdByName">Curated by <strong class="text-slate-700">{{ problem.createdByName }}</strong></span>
-            <span>•</span>
+          <div class="mt-4 flex flex-wrap items-center gap-3 text-xs text-zinc-400 font-medium">
+            <span *ngIf="problem.createdByName" class="flex items-center gap-1.5">
+              <span class="w-2 h-2 rounded-full bg-amber-500"></span>
+              Curated by <strong class="text-zinc-200">{{ problem.createdByName }}</strong>
+            </span>
+            <span class="text-zinc-600">•</span>
             <span>Added {{ problem.createdAt | date:'mediumDate' }}</span>
+            <span *ngIf="problem.status" class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider"
+                  [ngClass]="problem.status === 'PUBLISHED' ? 'bg-emerald-950/70 text-emerald-400 border border-emerald-800' : 'bg-zinc-800 text-zinc-400'">
+              {{ problem.status }}
+            </span>
           </div>
         </div>
 
@@ -79,50 +91,50 @@ import { Problem } from '../../shared/models/problem.model';
         <div class="p-6 sm:p-8 space-y-8">
           <!-- 1. The Core Problem -->
           <section>
-            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Problem Statement</h2>
-            <p class="text-slate-800 text-base leading-relaxed whitespace-pre-line font-medium">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-amber-500 mb-2">Problem Statement & Background</h2>
+            <p class="text-zinc-200 text-base leading-relaxed whitespace-pre-line font-medium">
               {{ problem.description }}
             </p>
           </section>
 
           <!-- 2. Impact & Why it matters -->
-          <section *ngIf="problem.impact" class="p-5 bg-amber-50/50 rounded-lg border border-amber-200/60">
-            <h2 class="text-xs font-bold uppercase tracking-wider text-amber-900 mb-2 flex items-center gap-2">
-              <svg class="w-4 h-4 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          <section *ngIf="problem.impact" class="p-5 bg-amber-950/20 rounded-xl border-l-4 border-amber-500 border border-zinc-800">
+            <h2 class="text-xs font-extrabold uppercase tracking-wider text-amber-400 mb-2 flex items-center gap-2">
+              <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
               Real-World Impact & Why It Matters
             </h2>
-            <p class="text-sm text-amber-950 leading-relaxed">
+            <p class="text-sm text-zinc-300 leading-relaxed">
               {{ problem.impact }}
             </p>
           </section>
 
           <!-- 3. Possible Solution Direction -->
-          <section *ngIf="problem.solutionDirection" class="p-5 bg-indigo-50/50 rounded-lg border border-indigo-100">
-            <h2 class="text-xs font-bold uppercase tracking-wider text-indigo-900 mb-2 flex items-center gap-2">
-              <svg class="w-4 h-4 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
+          <section *ngIf="problem.solutionDirection" class="p-5 bg-zinc-950/70 rounded-xl border border-zinc-800">
+            <h2 class="text-xs font-extrabold uppercase tracking-wider text-zinc-300 mb-2 flex items-center gap-2">
+              <svg class="w-4 h-4 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"/></svg>
               Architectural & Solution Direction
             </h2>
-            <p class="text-sm text-indigo-950 leading-relaxed">
+            <p class="text-sm text-zinc-300 leading-relaxed">
               {{ problem.solutionDirection }}
             </p>
           </section>
 
           <!-- 4. Expected Deliverable / Outcome -->
           <section *ngIf="problem.expectedOutcome">
-            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-2">Expected Project Deliverable</h2>
-            <p class="text-sm text-slate-700 leading-relaxed bg-slate-50 p-4 rounded-lg border border-slate-200">
+            <h2 class="text-xs font-bold uppercase tracking-wider text-amber-500 mb-2">Expected Project Deliverable</h2>
+            <p class="text-sm text-zinc-200 leading-relaxed bg-zinc-950 p-4 rounded-xl border border-zinc-800 font-mono">
               {{ problem.expectedOutcome }}
             </p>
           </section>
 
           <!-- 5. Technologies Stack -->
           <section>
-            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Recommended Technologies</h2>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-3">Recommended Technologies</h2>
             <div class="flex flex-wrap gap-2">
-              <span *ngFor="let tech of problem.technologies" class="px-3 py-1 rounded-md bg-slate-100 text-slate-800 text-xs font-mono font-medium">
+              <span *ngFor="let tech of problem.technologies" class="px-3 py-1.5 rounded-lg bg-zinc-800 border border-zinc-700 text-amber-400 text-xs font-mono font-medium">
                 {{ tech.name }}
               </span>
-              <span *ngIf="!problem.technologies || problem.technologies.length === 0" class="text-xs text-slate-400 italic">
+              <span *ngIf="!problem.technologies || problem.technologies.length === 0" class="text-xs text-zinc-500 italic">
                 Any modern full-stack or mobile architecture
               </span>
             </div>
@@ -130,23 +142,23 @@ import { Problem } from '../../shared/models/problem.model';
 
           <!-- 6. Tags -->
           <section *ngIf="problem.tags && problem.tags.length > 0">
-            <h2 class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-3">Associated Categories & Tags</h2>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-zinc-400 mb-3">Associated Categories & Tags</h2>
             <div class="flex flex-wrap gap-2">
-              <span *ngFor="let tag of problem.tags" class="px-2.5 py-1 rounded-full bg-slate-50 border border-slate-200 text-slate-600 text-xs">
+              <span *ngFor="let tag of problem.tags" class="px-3 py-1 rounded-full bg-zinc-950 border border-zinc-800 text-zinc-400 text-xs">
                 #{{ tag.name }}
               </span>
             </div>
           </section>
 
           <!-- Bottom Action Callout -->
-          <div class="mt-10 p-6 bg-slate-900 rounded-xl text-white flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="mt-10 p-6 bg-gradient-to-r from-zinc-950 via-zinc-900 to-black rounded-2xl border border-zinc-800 flex flex-col sm:flex-row items-center justify-between gap-4">
             <div>
-              <h3 class="font-bold text-base">Ready to build this project?</h3>
-              <p class="text-xs text-slate-400 mt-1">Shortlist this problem to your personal review list or share it with your team.</p>
+              <h3 class="font-extrabold text-white text-base">Ready to engineer this project?</h3>
+              <p class="text-xs text-zinc-400 mt-1">Shortlist this problem to your candidate dashboard or review it with your team.</p>
             </div>
             <button
               (click)="toggleBookmark()"
-              class="px-5 py-2.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-bold tracking-wide transition-colors whitespace-nowrap">
+              class="px-6 py-3 bg-amber-500 hover:bg-amber-400 text-black rounded-xl text-xs font-black tracking-wide transition-all whitespace-nowrap shadow-md shadow-amber-500/20">
               {{ problem.bookmarked ? 'Saved to Shortlist' : 'Add to Shortlist' }}
             </button>
           </div>
@@ -245,13 +257,13 @@ export class ProblemDetailsComponent implements OnInit {
   getDifficultyBadgeClass(difficulty: string): string {
     switch (difficulty?.toUpperCase()) {
       case 'BEGINNER':
-        return 'bg-emerald-50 text-emerald-700 border border-emerald-200';
+        return 'bg-emerald-950/70 text-emerald-400 border border-emerald-850';
       case 'INTERMEDIATE':
-        return 'bg-amber-50 text-amber-700 border border-amber-200';
+        return 'bg-amber-950/70 text-amber-400 border border-amber-800';
       case 'ADVANCED':
-        return 'bg-rose-50 text-rose-700 border border-rose-200';
+        return 'bg-rose-950/70 text-rose-400 border border-rose-850';
       default:
-        return 'bg-slate-100 text-slate-700';
+        return 'bg-zinc-800 text-zinc-400 border border-zinc-700';
     }
   }
 

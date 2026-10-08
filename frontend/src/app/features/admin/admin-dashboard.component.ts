@@ -15,53 +15,57 @@ type AdminTab = 'overview' | 'problems' | 'technologies' | 'tags';
   template: `
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <!-- Header with Tabs -->
-      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200">
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-zinc-800">
         <div>
-          <div class="flex items-center gap-2">
-            <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Admin Console</h1>
-            <span class="px-2.5 py-0.5 text-xs font-bold rounded-full bg-rose-100 text-rose-700">SUPER ADMIN</span>
+          <div class="flex items-center gap-2.5">
+            <h1 class="text-3xl font-black text-white tracking-tight">Admin Console</h1>
+            <span class="px-2.5 py-0.5 text-[10px] font-black rounded-md bg-amber-500/20 text-amber-400 border border-amber-500/30 uppercase tracking-widest">SUPER ADMIN</span>
           </div>
-          <p class="text-sm text-slate-500 mt-1">
+          <p class="text-xs text-zinc-400 mt-1">
             Manage real-world problem statements, curate technology stacks, and oversee platform taxonomy.
           </p>
         </div>
 
         <!-- Tab Pills -->
-        <div class="flex items-center gap-1 bg-slate-100 p-1 rounded-xl">
+        <div class="flex items-center gap-1.5 bg-zinc-900 border border-zinc-800 p-1.5 rounded-xl">
           <button
             (click)="activeTab = 'overview'"
-            [class.bg-white]="activeTab === 'overview'"
-            [class.text-indigo-600]="activeTab === 'overview'"
-            [class.shadow-xs]="activeTab === 'overview'"
-            [class.text-slate-600]="activeTab !== 'overview'"
-            class="px-4 py-2 text-xs font-semibold rounded-lg transition-all">
+            [class.bg-amber-500]="activeTab === 'overview'"
+            [class.text-black]="activeTab === 'overview'"
+            [class.font-extrabold]="activeTab === 'overview'"
+            [class.shadow-sm]="activeTab === 'overview'"
+            [class.text-zinc-400]="activeTab !== 'overview'"
+            class="px-4 py-2 text-xs font-bold rounded-lg transition-all hover:text-white">
             Overview
           </button>
           <button
             (click)="activeTab = 'problems'"
-            [class.bg-white]="activeTab === 'problems'"
-            [class.text-indigo-600]="activeTab === 'problems'"
-            [class.shadow-xs]="activeTab === 'problems'"
-            [class.text-slate-600]="activeTab !== 'problems'"
-            class="px-4 py-2 text-xs font-semibold rounded-lg transition-all">
+            [class.bg-amber-500]="activeTab === 'problems'"
+            [class.text-black]="activeTab === 'problems'"
+            [class.font-extrabold]="activeTab === 'problems'"
+            [class.shadow-sm]="activeTab === 'problems'"
+            [class.text-zinc-400]="activeTab !== 'problems'"
+            class="px-4 py-2 text-xs font-bold rounded-lg transition-all hover:text-white">
             Problems
           </button>
           <button
             (click)="activeTab = 'technologies'"
-            [class.bg-white]="activeTab === 'technologies'"
-            [class.text-indigo-600]="activeTab === 'technologies'"
-            [class.shadow-xs]="activeTab === 'technologies'"
-            [class.text-slate-600]="activeTab !== 'technologies'"
-            class="px-4 py-2 text-xs font-semibold rounded-lg transition-all">
+            [class.bg-amber-500]="activeTab === 'technologies'"
+            [class.text-black]="activeTab === 'technologies'"
+            [class.font-extrabold]="activeTab === 'technologies'"
+            [class.shadow-sm]="activeTab === 'technologies'"
+            [class.text-zinc-400]="activeTab !== 'technologies'"
+            class="px-4 py-2 text-xs font-bold rounded-lg transition-all hover:text-white">
             Technologies
           </button>
           <button
             (click)="activeTab = 'tags'"
-            [class.bg-white]="activeTab === 'tags'"
-            [class.text-indigo-600]="activeTab === 'tags'"
-            [class.shadow-xs]="activeTab === 'tags'"
-            [class.text-slate-600]="activeTab !== 'tags'"
-            class="px-4 py-2 text-xs font-semibold rounded-lg transition-all">
+            [class.bg-amber-500]="activeTab === 'tags'"
+            [class.text-black]="activeTab === 'tags'"
+            [class.font-extrabold]="activeTab === 'tags'"
+            [class.shadow-sm]="activeTab === 'tags'"
+            [class.text-zinc-400]="activeTab !== 'tags'"
+            class="px-4 py-2 text-xs font-bold rounded-lg transition-all hover:text-white">
             Tags
           </button>
         </div>
@@ -69,17 +73,17 @@ type AdminTab = 'overview' | 'problems' | 'technologies' | 'tags';
 
       <!-- Feedback Banner -->
       <div *ngIf="notification" class="mt-4 p-4 rounded-xl border flex items-center justify-between"
-           [ngClass]="notification.type === 'success' ? 'bg-emerald-50 border-emerald-200 text-emerald-800' : 'bg-rose-50 border-rose-200 text-rose-800'">
-        <div class="flex items-center gap-2 text-sm font-medium">
-          <svg *ngIf="notification.type === 'success'" class="w-5 h-5 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+           [ngClass]="notification.type === 'success' ? 'bg-emerald-950/40 border-emerald-800/60 text-emerald-300' : 'bg-rose-950/40 border-rose-800/60 text-rose-300'">
+        <div class="flex items-center gap-2.5 text-xs font-bold">
+          <svg *ngIf="notification.type === 'success'" class="w-4 h-4 text-emerald-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
           </svg>
-          <svg *ngIf="notification.type === 'error'" class="w-5 h-5 text-rose-600" fill="currentColor" viewBox="0 0 20 20">
+          <svg *ngIf="notification.type === 'error'" class="w-4 h-4 text-rose-400 shrink-0" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7 4a1 1 0 11-2 0 1 1 0 012 0zm-1-9a1 1 0 00-1 1v4a1 1 0 102 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/>
           </svg>
           <span>{{ notification.message }}</span>
         </div>
-        <button (click)="notification = null" class="text-xs font-bold opacity-60 hover:opacity-100">✕</button>
+        <button (click)="notification = null" class="text-xs font-bold opacity-60 hover:opacity-100 text-white">✕</button>
       </div>
 
       <!-- TAB 1: OVERVIEW -->
@@ -87,86 +91,87 @@ type AdminTab = 'overview' | 'problems' | 'technologies' | 'tags';
         <!-- Stats Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
           <!-- Total Problems -->
-          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-2xs">
+          <div class="bg-zinc-900 p-5 rounded-2xl border border-zinc-800 hover:border-zinc-700 transition-colors shadow-lg">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Total Statements</span>
-              <span class="p-2 rounded-lg bg-indigo-50 text-indigo-600">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-zinc-400">Total Statements</span>
+              <span class="p-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
               </span>
             </div>
-            <p class="text-3xl font-extrabold text-slate-900 mt-2">{{ stats?.totalProblems || 0 }}</p>
-            <div class="flex items-center gap-3 mt-3 text-xs text-slate-500">
-              <span class="text-emerald-600 font-semibold">{{ stats?.publishedProblems || 0 }} Published</span>
-              <span>·</span>
-              <span class="text-amber-600 font-semibold">{{ stats?.draftProblems || 0 }} Drafts</span>
-              <span>·</span>
-              <span class="text-slate-400 font-semibold">{{ stats?.archivedProblems || 0 }} Archived</span>
+            <p class="text-3xl font-black text-white mt-2">{{ stats?.totalProblems || 0 }}</p>
+            <div class="flex items-center gap-2 mt-3 text-xs text-zinc-400">
+              <span class="text-emerald-400 font-bold">{{ stats?.publishedProblems || 0 }} Published</span>
+              <span class="text-zinc-600">·</span>
+              <span class="text-amber-400 font-bold">{{ stats?.draftProblems || 0 }} Drafts</span>
+              <span class="text-zinc-600">·</span>
+              <span class="text-zinc-500 font-bold">{{ stats?.archivedProblems || 0 }} Archived</span>
             </div>
           </div>
 
           <!-- Total Students -->
-          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-2xs">
+          <div class="bg-zinc-900 p-5 rounded-2xl border border-zinc-800 hover:border-zinc-700 transition-colors shadow-lg">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Active Students</span>
-              <span class="p-2 rounded-lg bg-emerald-50 text-emerald-600">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-zinc-400">Active Students</span>
+              <span class="p-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
               </span>
             </div>
-            <p class="text-3xl font-extrabold text-slate-900 mt-2">{{ stats?.totalStudents || 0 }}</p>
-            <p class="text-xs text-slate-400 mt-3">Out of {{ stats?.totalUsers || 0 }} total registered accounts</p>
+            <p class="text-3xl font-black text-white mt-2">{{ stats?.totalStudents || 0 }}</p>
+            <p class="text-xs text-zinc-500 mt-3">Out of {{ stats?.totalUsers || 0 }} total registered accounts</p>
           </div>
 
           <!-- Bookmarks -->
-          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-2xs">
+          <div class="bg-zinc-900 p-5 rounded-2xl border border-zinc-800 hover:border-zinc-700 transition-colors shadow-lg">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Total Bookmarks</span>
-              <span class="p-2 rounded-lg bg-amber-50 text-amber-600">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-zinc-400">Total Bookmarks</span>
+              <span class="p-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
                 <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path d="M5 4a2 2 0 012-2h6a2 2 0 012 2v14l-5-2.5L5 18V4z"/></svg>
               </span>
             </div>
-            <p class="text-3xl font-extrabold text-slate-900 mt-2">{{ stats?.totalBookmarks || 0 }}</p>
-            <p class="text-xs text-slate-400 mt-3">Shortlists saved across all students</p>
+            <p class="text-3xl font-black text-white mt-2">{{ stats?.totalBookmarks || 0 }}</p>
+            <p class="text-xs text-zinc-500 mt-3">Shortlists saved across all students</p>
           </div>
 
           <!-- Taxonomy -->
-          <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-2xs">
+          <div class="bg-zinc-900 p-5 rounded-2xl border border-zinc-800 hover:border-zinc-700 transition-colors shadow-lg">
             <div class="flex items-center justify-between">
-              <span class="text-xs font-semibold uppercase tracking-wider text-slate-400">Taxonomy Stack</span>
-              <span class="p-2 rounded-lg bg-purple-50 text-purple-600">
+              <span class="text-[11px] font-bold uppercase tracking-wider text-zinc-400">Taxonomy Stack</span>
+              <span class="p-2 rounded-xl bg-amber-500/10 text-amber-400 border border-amber-500/20">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z"/></svg>
               </span>
             </div>
-            <p class="text-3xl font-extrabold text-slate-900 mt-2">{{ (stats?.totalTechnologies || 0) + (stats?.totalTags || 0) }}</p>
-            <div class="flex items-center gap-3 mt-3 text-xs text-slate-500">
-              <span class="font-semibold text-purple-600">{{ stats?.totalTechnologies || 0 }} Technologies</span>
-              <span>·</span>
-              <span class="font-semibold text-slate-600">{{ stats?.totalTags || 0 }} Tags</span>
+            <p class="text-3xl font-black text-white mt-2">{{ (stats?.totalTechnologies || 0) + (stats?.totalTags || 0) }}</p>
+            <div class="flex items-center gap-2 mt-3 text-xs">
+              <span class="font-bold text-amber-400">{{ stats?.totalTechnologies || 0 }} Tech</span>
+              <span class="text-zinc-600">·</span>
+              <span class="font-bold text-zinc-400">{{ stats?.totalTags || 0 }} Tags</span>
             </div>
           </div>
         </div>
 
         <!-- Quick Action Shortcuts -->
-        <div class="bg-gradient-to-br from-indigo-900 via-indigo-800 to-slate-900 rounded-2xl p-6 text-white shadow-lg">
-          <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl p-6 relative overflow-hidden shadow-xl">
+          <div class="absolute -right-20 -top-20 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-6 relative z-10">
             <div>
-              <h2 class="text-xl font-bold">Quick Administrative Actions</h2>
-              <p class="text-sm text-indigo-200 mt-1">Direct access to manage content and platform metadata without delay.</p>
+              <h2 class="text-xl font-black text-white">Administrative Operations</h2>
+              <p class="text-xs text-zinc-400 mt-1">Direct access to manage statements, curate tech stacks, and update platform taxonomy.</p>
             </div>
             <div class="flex flex-wrap items-center gap-3">
               <button
                 (click)="openCreateProblemModal()"
-                class="px-4 py-2.5 bg-indigo-500 hover:bg-indigo-400 text-white text-xs font-bold rounded-lg shadow-xs transition-colors flex items-center gap-2">
+                class="px-4 py-2.5 bg-amber-500 hover:bg-amber-400 active:scale-95 text-black text-xs font-black rounded-xl shadow-lg shadow-amber-500/20 transition-all flex items-center gap-2">
                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
                 Post New Problem
               </button>
               <button
                 (click)="activeTab = 'technologies'"
-                class="px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white text-xs font-bold rounded-lg transition-colors">
+                class="px-4 py-2.5 bg-zinc-950 hover:bg-zinc-800 border border-zinc-700/80 text-white text-xs font-bold rounded-xl transition-colors">
                 Manage Tech Stack
               </button>
               <button
                 (click)="activeTab = 'tags'"
-                class="px-4 py-2.5 bg-white/10 hover:bg-white/20 text-white text-xs font-bold rounded-lg transition-colors">
+                class="px-4 py-2.5 bg-zinc-950 hover:bg-zinc-800 border border-zinc-700/80 text-white text-xs font-bold rounded-xl transition-colors">
                 Manage Tags
               </button>
             </div>
@@ -177,7 +182,7 @@ type AdminTab = 'overview' | 'problems' | 'technologies' | 'tags';
       <!-- TAB 2: PROBLEMS MANAGEMENT -->
       <div *ngIf="activeTab === 'problems'" class="mt-6 space-y-6">
         <!-- Action Header & Filters -->
-        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-2xs flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div class="bg-zinc-900 p-5 rounded-2xl border border-zinc-800 shadow-xl flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div class="flex flex-wrap items-center gap-3 flex-1">
             <!-- Search -->
             <div class="relative flex-1 min-w-[240px]">
@@ -186,16 +191,16 @@ type AdminTab = 'overview' | 'problems' | 'technologies' | 'tags';
                 [(ngModel)]="problemSearchQuery"
                 (ngModelChange)="onProblemSearchChange()"
                 placeholder="Search statements by title..."
-                class="w-full pl-9 pr-4 py-2 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                class="w-full pl-9 pr-4 py-2.5 text-xs bg-zinc-950 border border-zinc-800 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-colors"
               />
-              <svg class="w-4 h-4 absolute left-3 top-2.5 text-slate-400 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+              <svg class="w-4 h-4 absolute left-3 top-3 text-zinc-500 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
             </div>
 
             <!-- Status Filter -->
             <select
               [(ngModel)]="problemStatusFilter"
               (ngModelChange)="loadProblems()"
-              class="text-xs bg-slate-50 border border-slate-200 rounded-lg px-3 py-2 text-slate-700 font-medium focus:bg-white focus:outline-none">
+              class="text-xs bg-zinc-950 border border-zinc-800 rounded-xl px-3 py-2.5 text-zinc-300 font-bold focus:outline-none focus:border-amber-500">
               <option value="">All Statuses</option>
               <option value="PUBLISHED">Published</option>
               <option value="DRAFT">Draft</option>
@@ -205,18 +210,18 @@ type AdminTab = 'overview' | 'problems' | 'technologies' | 'tags';
 
           <button
             (click)="openCreateProblemModal()"
-            class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg shadow-xs transition-colors flex items-center justify-center gap-2">
+            class="px-4 py-2.5 bg-amber-500 hover:bg-amber-400 active:scale-95 text-black text-xs font-black rounded-xl shadow-lg shadow-amber-500/20 transition-all flex items-center justify-center gap-2">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
             Add Statement
           </button>
         </div>
 
         <!-- Problems Table -->
-        <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-2xs">
+        <div class="bg-zinc-900 border border-zinc-800 rounded-2xl overflow-hidden shadow-xl">
           <div class="overflow-x-auto">
             <table class="w-full text-left border-collapse">
               <thead>
-                <tr class="bg-slate-50 border-b border-slate-200 text-[11px] font-bold uppercase tracking-wider text-slate-500">
+                <tr class="bg-zinc-950/80 border-b border-zinc-800 text-[11px] font-black uppercase tracking-wider text-zinc-400">
                   <th class="py-3.5 px-4">ID</th>
                   <th class="py-3.5 px-4">Problem Title & Domain</th>
                   <th class="py-3.5 px-4">Difficulty</th>
@@ -225,57 +230,57 @@ type AdminTab = 'overview' | 'problems' | 'technologies' | 'tags';
                   <th class="py-3.5 px-4 text-right">Actions</th>
                 </tr>
               </thead>
-              <tbody class="divide-y divide-slate-100 text-xs">
-                <tr *ngFor="let p of problems" class="hover:bg-slate-50/80 transition-colors">
-                  <td class="py-3 px-4 font-mono font-bold text-slate-400">#{{ p.id }}</td>
-                  <td class="py-3 px-4 max-w-md">
-                    <a [routerLink]="['/problems', p.id]" target="_blank" class="font-bold text-slate-900 hover:text-indigo-600 block line-clamp-1">
+              <tbody class="divide-y divide-zinc-800/60 text-xs">
+                <tr *ngFor="let p of problems" class="hover:bg-zinc-800/40 transition-colors">
+                  <td class="py-3.5 px-4 font-mono font-bold text-amber-400/80">#{{ p.id }}</td>
+                  <td class="py-3.5 px-4 max-w-md">
+                    <a [routerLink]="['/problems', p.id]" target="_blank" class="font-bold text-white hover:text-amber-400 block line-clamp-1 transition-colors">
                       {{ p.title }}
                     </a>
-                    <span class="text-[11px] text-slate-400 font-medium">{{ p.domain }}</span>
+                    <span class="text-[11px] text-zinc-400 font-medium">{{ p.domain }}</span>
                   </td>
-                  <td class="py-3 px-4">
-                    <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wide"
+                  <td class="py-3.5 px-4">
+                    <span class="px-2 py-0.5 rounded text-[10px] font-black uppercase tracking-wider"
                           [ngClass]="{
-                            'bg-emerald-50 text-emerald-700': p.difficulty === 'BEGINNER',
-                            'bg-amber-50 text-amber-700': p.difficulty === 'INTERMEDIATE',
-                            'bg-rose-50 text-rose-700': p.difficulty === 'ADVANCED'
+                            'bg-emerald-500/10 text-emerald-400 border border-emerald-500/20': p.difficulty === 'BEGINNER',
+                            'bg-amber-500/10 text-amber-400 border border-amber-500/20': p.difficulty === 'INTERMEDIATE',
+                            'bg-rose-500/10 text-rose-400 border border-rose-500/20': p.difficulty === 'ADVANCED'
                           }">
                       {{ p.difficulty }}
                     </span>
                   </td>
-                  <td class="py-3 px-4 text-slate-600 font-medium">
+                  <td class="py-3.5 px-4 text-zinc-300 font-medium">
                     {{ formatProjectType(p.projectType) }}
                   </td>
-                  <td class="py-3 px-4">
-                    <span class="px-2 py-0.5 rounded-full text-[10px] font-bold"
+                  <td class="py-3.5 px-4">
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-black uppercase tracking-wide"
                           [ngClass]="{
-                            'bg-emerald-100 text-emerald-800': p.status === 'PUBLISHED',
-                            'bg-amber-100 text-amber-800': p.status === 'DRAFT',
-                            'bg-slate-200 text-slate-700': p.status === 'ARCHIVED'
+                            'bg-emerald-500/15 text-emerald-400 border border-emerald-500/30': p.status === 'PUBLISHED',
+                            'bg-amber-500/15 text-amber-400 border border-amber-500/30': p.status === 'DRAFT',
+                            'bg-zinc-800 text-zinc-400 border border-zinc-700': p.status === 'ARCHIVED'
                           }">
                       {{ p.status }}
                     </span>
                   </td>
-                  <td class="py-3 px-4 text-right">
+                  <td class="py-3.5 px-4 text-right">
                     <div class="flex items-center justify-end gap-1.5">
                       <button
                         (click)="openEditProblemModal(p)"
                         title="Edit Problem"
-                        class="px-2.5 py-1 text-slate-600 hover:text-indigo-600 hover:bg-slate-100 rounded font-semibold transition-colors">
+                        class="px-2.5 py-1 text-zinc-300 hover:text-black hover:bg-amber-500 rounded-lg font-bold transition-all">
                         Edit
                       </button>
                       <button
                         *ngIf="p.status !== 'ARCHIVED'"
                         (click)="archiveProblem(p)"
                         title="Archive Problem"
-                        class="px-2.5 py-1 text-amber-600 hover:bg-amber-50 rounded font-semibold transition-colors">
+                        class="px-2.5 py-1 text-amber-400 hover:text-black hover:bg-amber-400 rounded-lg font-bold transition-all">
                         Archive
                       </button>
                       <button
                         (click)="deleteProblem(p)"
                         title="Delete Problem"
-                        class="px-2.5 py-1 text-rose-600 hover:bg-rose-50 rounded font-semibold transition-colors">
+                        class="px-2.5 py-1 text-rose-400 hover:text-white hover:bg-rose-600 rounded-lg font-bold transition-all">
                         Delete
                       </button>
                     </div>
@@ -283,7 +288,7 @@ type AdminTab = 'overview' | 'problems' | 'technologies' | 'tags';
                 </tr>
 
                 <tr *ngIf="problems.length === 0 && !loadingProblems">
-                  <td colspan="6" class="py-12 text-center text-slate-400">
+                  <td colspan="6" class="py-12 text-center text-zinc-500">
                     No problem statements found matching criteria.
                   </td>
                 </tr>
@@ -292,20 +297,20 @@ type AdminTab = 'overview' | 'problems' | 'technologies' | 'tags';
           </div>
 
           <!-- Pagination -->
-          <div class="p-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+          <div class="p-4 border-t border-zinc-800 flex items-center justify-between text-xs text-zinc-400 bg-zinc-950/50">
             <span>Showing {{ problems.length }} of {{ totalProblemsCount }} statements</span>
             <div class="flex items-center gap-2">
               <button
                 (click)="problemPage = problemPage - 1; loadProblems()"
                 [disabled]="problemPage === 0"
-                class="px-3 py-1.5 border border-slate-200 rounded font-semibold hover:bg-slate-50 disabled:opacity-40">
+                class="px-3 py-1.5 border border-zinc-800 rounded-lg font-bold hover:bg-zinc-800 hover:border-amber-500/50 text-zinc-300 transition-colors disabled:opacity-40 disabled:hover:border-zinc-800 disabled:hover:bg-transparent">
                 Previous
               </button>
-              <span class="font-bold text-slate-700">Page {{ problemPage + 1 }}</span>
+              <span class="font-bold text-white px-1">Page {{ problemPage + 1 }}</span>
               <button
                 (click)="problemPage = problemPage + 1; loadProblems()"
                 [disabled]="(problemPage + 1) * problemPageSize >= totalProblemsCount"
-                class="px-3 py-1.5 border border-slate-200 rounded font-semibold hover:bg-slate-50 disabled:opacity-40">
+                class="px-3 py-1.5 border border-zinc-800 rounded-lg font-bold hover:bg-zinc-800 hover:border-amber-500/50 text-zinc-300 transition-colors disabled:opacity-40 disabled:hover:border-zinc-800 disabled:hover:bg-transparent">
                 Next
               </button>
             </div>
@@ -316,33 +321,33 @@ type AdminTab = 'overview' | 'problems' | 'technologies' | 'tags';
       <!-- TAB 3: TECHNOLOGIES MANAGEMENT -->
       <div *ngIf="activeTab === 'technologies'" class="mt-6 space-y-6">
         <!-- Add Technology Box -->
-        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div class="max-w-md w-full flex items-center gap-2">
+        <div class="bg-zinc-900 p-5 rounded-2xl border border-zinc-800 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="max-w-md w-full flex items-center gap-2.5">
             <input
               type="text"
               [(ngModel)]="newTechName"
               placeholder="e.g. Flutter, PyTorch, GraphQL..."
-              class="flex-1 px-3.5 py-2 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              class="flex-1 px-3.5 py-2.5 text-xs bg-zinc-950 border border-zinc-800 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-colors"
             />
             <button
               (click)="addTechnology()"
               [disabled]="!newTechName.trim()"
-              class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg shadow-xs transition-colors disabled:opacity-40">
+              class="px-4 py-2.5 bg-amber-500 hover:bg-amber-400 active:scale-95 text-black text-xs font-black rounded-xl shadow-lg shadow-amber-500/20 transition-all disabled:opacity-40">
               Add Technology
             </button>
           </div>
-          <span class="text-xs text-slate-400 font-medium">Total: {{ technologies.length }} curated technologies</span>
+          <span class="text-xs text-zinc-400 font-medium">Total: {{ technologies.length }} curated technologies</span>
         </div>
 
         <!-- Tech Badges Grid -->
-        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-2xs">
+        <div class="bg-zinc-900 p-6 rounded-2xl border border-zinc-800 shadow-xl">
           <div class="flex flex-wrap gap-2.5">
-            <div *ngFor="let tech of technologies" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-slate-100 text-slate-800 text-xs font-semibold border border-slate-200 hover:border-slate-300 transition-colors">
+            <div *ngFor="let tech of technologies" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-950 text-zinc-200 text-xs font-bold border border-zinc-800 hover:border-amber-500/50 transition-colors">
               <span>{{ tech.name }}</span>
               <button
                 (click)="deleteTechnology(tech)"
                 title="Remove technology"
-                class="text-slate-400 hover:text-rose-600 transition-colors font-bold text-sm leading-none">
+                class="text-zinc-500 hover:text-rose-400 transition-colors font-black text-sm leading-none ml-1">
                 ×
               </button>
             </div>
@@ -353,33 +358,33 @@ type AdminTab = 'overview' | 'problems' | 'technologies' | 'tags';
       <!-- TAB 4: TAGS MANAGEMENT -->
       <div *ngIf="activeTab === 'tags'" class="mt-6 space-y-6">
         <!-- Add Tag Box -->
-        <div class="bg-white p-5 rounded-xl border border-slate-200 shadow-2xs flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-          <div class="max-w-md w-full flex items-center gap-2">
+        <div class="bg-zinc-900 p-5 rounded-2xl border border-zinc-800 shadow-xl flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="max-w-md w-full flex items-center gap-2.5">
             <input
               type="text"
               [(ngModel)]="newTagName"
               placeholder="e.g. Real-Time, IoT, Microservices..."
-              class="flex-1 px-3.5 py-2 text-xs bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500"
+              class="flex-1 px-3.5 py-2.5 text-xs bg-zinc-950 border border-zinc-800 rounded-xl text-white placeholder-zinc-500 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 transition-colors"
             />
             <button
               (click)="addTag()"
               [disabled]="!newTagName.trim()"
-              class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg shadow-xs transition-colors disabled:opacity-40">
+              class="px-4 py-2.5 bg-amber-500 hover:bg-amber-400 active:scale-95 text-black text-xs font-black rounded-xl shadow-lg shadow-amber-500/20 transition-all disabled:opacity-40">
               Add Tag
             </button>
           </div>
-          <span class="text-xs text-slate-400 font-medium">Total: {{ tags.length }} curated tags</span>
+          <span class="text-xs text-zinc-400 font-medium">Total: {{ tags.length }} curated tags</span>
         </div>
 
         <!-- Tags Grid -->
-        <div class="bg-white p-6 rounded-xl border border-slate-200 shadow-2xs">
+        <div class="bg-zinc-900 p-6 rounded-2xl border border-zinc-800 shadow-xl">
           <div class="flex flex-wrap gap-2.5">
-            <div *ngFor="let tag of tags" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-indigo-50 text-indigo-800 text-xs font-semibold border border-indigo-100 hover:border-indigo-200 transition-colors">
+            <div *ngFor="let tag of tags" class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-zinc-950 text-amber-400 text-xs font-mono font-bold border border-zinc-800 hover:border-amber-500/50 transition-colors">
               <span>#{{ tag.name }}</span>
               <button
                 (click)="deleteTag(tag)"
                 title="Remove tag"
-                class="text-indigo-400 hover:text-rose-600 transition-colors font-bold text-sm leading-none">
+                class="text-zinc-500 hover:text-rose-400 transition-colors font-black text-sm leading-none ml-1">
                 ×
               </button>
             </div>
@@ -389,59 +394,59 @@ type AdminTab = 'overview' | 'problems' | 'technologies' | 'tags';
     </div>
 
     <!-- CREATE / EDIT PROBLEM MODAL -->
-    <div *ngIf="showProblemModal" class="fixed inset-0 z-50 overflow-y-auto bg-slate-900/60 backdrop-blur-xs flex items-center justify-center p-4">
-      <div class="bg-white rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] flex flex-col overflow-hidden border border-slate-200">
+    <div *ngIf="showProblemModal" class="fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+      <div class="bg-zinc-900 rounded-2xl shadow-2xl max-w-3xl w-full max-h-[90vh] flex flex-col overflow-hidden border border-zinc-800">
         <!-- Modal Header -->
-        <div class="px-6 py-4 border-b border-slate-100 flex items-center justify-between">
+        <div class="px-6 py-4 border-b border-zinc-800 flex items-center justify-between bg-zinc-950/80">
           <div>
-            <h2 class="text-lg font-bold text-slate-900">
+            <h2 class="text-lg font-black text-white">
               {{ editingProblemId ? 'Edit Problem Statement' : 'Create New Problem Statement' }}
             </h2>
-            <p class="text-xs text-slate-500">Provide detailed real-world problem context for students.</p>
+            <p class="text-xs text-zinc-400">Provide detailed real-world problem context for students.</p>
           </div>
-          <button (click)="closeProblemModal()" class="text-slate-400 hover:text-slate-700 text-lg font-bold">✕</button>
+          <button (click)="closeProblemModal()" class="text-zinc-400 hover:text-white text-lg font-bold">✕</button>
         </div>
 
         <!-- Modal Form Body -->
-        <div class="p-6 overflow-y-auto flex-1 space-y-5 text-xs">
+        <div class="p-6 overflow-y-auto flex-1 space-y-5 text-xs text-zinc-200">
           <!-- Title -->
           <div>
-            <label class="block font-bold text-slate-700 mb-1">Title *</label>
+            <label class="block font-bold uppercase tracking-wider text-[11px] text-zinc-400 mb-1.5">Title *</label>
             <input
               type="text"
               [(ngModel)]="problemForm.title"
               placeholder="e.g. Cold-Chain Monitoring System for Rural Vaccine Distribution"
-              class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs"
+              class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 text-xs"
             />
           </div>
 
           <!-- Description -->
           <div>
-            <label class="block font-bold text-slate-700 mb-1">Description *</label>
+            <label class="block font-bold uppercase tracking-wider text-[11px] text-zinc-400 mb-1.5">Description *</label>
             <textarea
               rows="3"
               [(ngModel)]="problemForm.description"
               placeholder="Describe the real-world operational challenge in clear detail..."
-              class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs"
+              class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 text-xs"
             ></textarea>
           </div>
 
           <!-- Row: Domain, Difficulty, Project Type, Status -->
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             <div>
-              <label class="block font-bold text-slate-700 mb-1">Domain *</label>
+              <label class="block font-bold uppercase tracking-wider text-[11px] text-zinc-400 mb-1.5">Domain *</label>
               <select
                 [(ngModel)]="problemForm.domain"
-                class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:outline-none text-xs">
+                class="w-full px-3 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-white focus:outline-none focus:border-amber-500 text-xs">
                 <option *ngFor="let d of domainOptions" [value]="d">{{ d }}</option>
               </select>
             </div>
 
             <div>
-              <label class="block font-bold text-slate-700 mb-1">Difficulty *</label>
+              <label class="block font-bold uppercase tracking-wider text-[11px] text-zinc-400 mb-1.5">Difficulty *</label>
               <select
                 [(ngModel)]="problemForm.difficulty"
-                class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:outline-none text-xs">
+                class="w-full px-3 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-white focus:outline-none focus:border-amber-500 text-xs">
                 <option value="BEGINNER">Beginner</option>
                 <option value="INTERMEDIATE">Intermediate</option>
                 <option value="ADVANCED">Advanced</option>
@@ -449,10 +454,10 @@ type AdminTab = 'overview' | 'problems' | 'technologies' | 'tags';
             </div>
 
             <div>
-              <label class="block font-bold text-slate-700 mb-1">Project Type *</label>
+              <label class="block font-bold uppercase tracking-wider text-[11px] text-zinc-400 mb-1.5">Project Type *</label>
               <select
                 [(ngModel)]="problemForm.projectType"
-                class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:outline-none text-xs">
+                class="w-full px-3 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-white focus:outline-none focus:border-amber-500 text-xs">
                 <option value="HACKATHON">Hackathon</option>
                 <option value="MINI_PROJECT">Mini Project</option>
                 <option value="MAJOR_PROJECT">Major Project</option>
@@ -461,10 +466,10 @@ type AdminTab = 'overview' | 'problems' | 'technologies' | 'tags';
             </div>
 
             <div>
-              <label class="block font-bold text-slate-700 mb-1">Status *</label>
+              <label class="block font-bold uppercase tracking-wider text-[11px] text-zinc-400 mb-1.5">Status *</label>
               <select
                 [(ngModel)]="problemForm.status"
-                class="w-full px-3 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:outline-none text-xs">
+                class="w-full px-3 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-white focus:outline-none focus:border-amber-500 text-xs">
                 <option value="PUBLISHED">Published</option>
                 <option value="DRAFT">Draft</option>
                 <option value="ARCHIVED">Archived</option>
@@ -474,50 +479,53 @@ type AdminTab = 'overview' | 'problems' | 'technologies' | 'tags';
 
           <!-- Impact -->
           <div>
-            <label class="block font-bold text-slate-700 mb-1">Real-World Impact</label>
+            <label class="block font-bold uppercase tracking-wider text-[11px] text-zinc-400 mb-1.5">Real-World Impact</label>
             <textarea
               rows="2"
               [(ngModel)]="problemForm.impact"
               placeholder="Why this matters, stakeholders affected, scale of benefit..."
-              class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs"
+              class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 text-xs"
             ></textarea>
           </div>
 
           <!-- Solution Direction -->
           <div>
-            <label class="block font-bold text-slate-700 mb-1">Architecture & Solution Direction</label>
+            <label class="block font-bold uppercase tracking-wider text-[11px] text-zinc-400 mb-1.5">Architecture & Solution Direction</label>
             <textarea
               rows="2"
               [(ngModel)]="problemForm.solutionDirection"
               placeholder="Suggested architecture, pipeline design, protocol suggestions..."
-              class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs"
+              class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 text-xs"
             ></textarea>
           </div>
 
           <!-- Expected Outcome -->
           <div>
-            <label class="block font-bold text-slate-700 mb-1">Expected Deliverables & Outcome</label>
+            <label class="block font-bold uppercase tracking-wider text-[11px] text-zinc-400 mb-1.5">Expected Deliverables & Outcome</label>
             <textarea
               rows="2"
               [(ngModel)]="problemForm.expectedOutcome"
               placeholder="Working prototype, dashboards, CI/CD deployment, documentation..."
-              class="w-full px-3.5 py-2 bg-slate-50 border border-slate-200 rounded-lg focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500 text-xs"
+              class="w-full px-3.5 py-2.5 bg-zinc-950 border border-zinc-800 rounded-xl text-white placeholder-zinc-600 focus:outline-none focus:border-amber-500 focus:ring-1 focus:ring-amber-500 text-xs"
             ></textarea>
           </div>
 
           <!-- Technologies Selector -->
           <div>
-            <label class="block font-bold text-slate-700 mb-1.5">Technologies (Select relevant)</label>
-            <div class="flex flex-wrap gap-1.5 max-h-32 overflow-y-auto p-2 border border-slate-200 rounded-lg bg-slate-50">
+            <label class="block font-bold uppercase tracking-wider text-[11px] text-zinc-400 mb-1.5">Technologies (Select relevant)</label>
+            <div class="flex flex-wrap gap-1.5 max-h-32 overflow-y-auto p-2.5 border border-zinc-800 rounded-xl bg-zinc-950">
               <button
                 *ngFor="let tech of technologies"
                 type="button"
                 (click)="toggleTechSelection(tech.id)"
-                [class.bg-indigo-600]="isTechSelected(tech.id)"
-                [class.text-white]="isTechSelected(tech.id)"
-                [class.bg-white]="!isTechSelected(tech.id)"
-                [class.text-slate-700]="!isTechSelected(tech.id)"
-                class="px-2.5 py-1 text-[11px] font-semibold rounded-md border border-slate-200 transition-colors">
+                [class.bg-amber-500]="isTechSelected(tech.id)"
+                [class.text-black]="isTechSelected(tech.id)"
+                [class.border-amber-500]="isTechSelected(tech.id)"
+                [class.font-extrabold]="isTechSelected(tech.id)"
+                [class.bg-zinc-900]="!isTechSelected(tech.id)"
+                [class.text-zinc-300]="!isTechSelected(tech.id)"
+                [class.border-zinc-800]="!isTechSelected(tech.id)"
+                class="px-2.5 py-1 text-[11px] font-semibold rounded-lg border transition-colors">
                 {{ tech.name }}
               </button>
             </div>
@@ -525,38 +533,41 @@ type AdminTab = 'overview' | 'problems' | 'technologies' | 'tags';
 
           <!-- Tags Selector -->
           <div>
-            <label class="block font-bold text-slate-700 mb-1.5">Tags (Select relevant)</label>
-            <div class="flex flex-wrap gap-1.5 max-h-32 overflow-y-auto p-2 border border-slate-200 rounded-lg bg-slate-50">
+            <label class="block font-bold uppercase tracking-wider text-[11px] text-zinc-400 mb-1.5">Tags (Select relevant)</label>
+            <div class="flex flex-wrap gap-1.5 max-h-32 overflow-y-auto p-2.5 border border-zinc-800 rounded-xl bg-zinc-950">
               <button
                 *ngFor="let tag of tags"
                 type="button"
                 (click)="toggleTagSelection(tag.id)"
-                [class.bg-indigo-600]="isTagSelected(tag.id)"
-                [class.text-white]="isTagSelected(tag.id)"
-                [class.bg-white]="!isTagSelected(tag.id)"
-                [class.text-slate-700]="!isTagSelected(tag.id)"
-                class="px-2.5 py-1 text-[11px] font-semibold rounded-md border border-slate-200 transition-colors">
+                [class.bg-amber-500]="isTagSelected(tag.id)"
+                [class.text-black]="isTagSelected(tag.id)"
+                [class.border-amber-500]="isTagSelected(tag.id)"
+                [class.font-extrabold]="isTagSelected(tag.id)"
+                [class.bg-zinc-900]="!isTagSelected(tag.id)"
+                [class.text-zinc-400]="!isTagSelected(tag.id)"
+                [class.border-zinc-800]="!isTagSelected(tag.id)"
+                class="px-2.5 py-1 text-[11px] font-mono font-medium rounded-lg border transition-colors">
                 #{{ tag.name }}
               </button>
             </div>
           </div>
 
-          <div *ngIf="formError" class="p-3 bg-rose-50 text-rose-700 rounded-lg font-medium">
+          <div *ngIf="formError" class="p-3.5 bg-rose-950/40 border border-rose-800/60 text-rose-300 rounded-xl font-medium">
             {{ formError }}
           </div>
         </div>
 
         <!-- Modal Footer -->
-        <div class="px-6 py-4 border-t border-slate-100 flex items-center justify-end gap-3 bg-slate-50">
+        <div class="px-6 py-4 border-t border-zinc-800 flex items-center justify-end gap-3 bg-zinc-950/80">
           <button
             (click)="closeProblemModal()"
-            class="px-4 py-2 text-xs font-semibold text-slate-600 hover:text-slate-900 transition-colors">
+            class="px-4 py-2 text-xs font-bold text-zinc-400 hover:text-white transition-colors">
             Cancel
           </button>
           <button
             (click)="saveProblem()"
             [disabled]="savingProblem"
-            class="px-5 py-2 bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-bold rounded-lg shadow-xs transition-colors disabled:opacity-50">
+            class="px-5 py-2.5 bg-amber-500 hover:bg-amber-400 active:scale-95 text-black text-xs font-black rounded-xl shadow-lg shadow-amber-500/20 transition-all disabled:opacity-50">
             {{ savingProblem ? 'Saving...' : (editingProblemId ? 'Update Statement' : 'Create Statement') }}
           </button>
         </div>
